@@ -1,0 +1,27 @@
+<mat-card>
+    <h3>Add Product:</h3>
+  
+    <form [formGroup]="addProductForm" (ngSubmit)="onSubmit($event)">
+      <mat-form-field class="example-form-field">
+        <mat-label>Product Name</mat-label>
+        <input matInput type="text" formControlName="name" />
+      </mat-form-field>
+      <mat-form-field class="example-form-field">
+        <mat-label>Store Name</mat-label>
+        <input matInput type="text" formControlName="storeName" />
+      </mat-form-field>
+      <mat-form-field class="example-form-field">
+        <mat-label>Price</mat-label>
+        <input matInput type="text" formControlName="price" />
+      </mat-form-field>
+    
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Estimated delivery date:</mat-label>
+        <input formControlName="deliveryDate" matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <button type="submit" mat-button color="accent" >Add Product</button>
+    </form>
+  </mat-card>
+  
