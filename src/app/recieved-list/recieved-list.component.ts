@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AppState } from '../products/interface/product.interface';
 import { Store, select } from '@ngrx/store';
-import { ProductService } from '../products/product.service';
 import { selectProductList, selectProductCurrency } from '../products/state/product.selector';
 
 @Component({

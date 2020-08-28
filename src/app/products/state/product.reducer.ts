@@ -4,7 +4,7 @@ import { AppState } from '../interface/product.interface';
 
 const initialSate = {
     productList: [],
-    idCounter: 0,
+    idCounter: 1,
     currency: 3.4
 }
 

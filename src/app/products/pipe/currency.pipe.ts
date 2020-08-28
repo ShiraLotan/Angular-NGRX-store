@@ -11,5 +11,4 @@ export class CurrencyPipe implements PipeTransform {
     }
     return price;
   }
-
 }

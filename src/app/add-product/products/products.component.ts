@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Store, select, State } from '@ngrx/store';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import * as moment from "moment";
 import { addProductToList, setProductCounterId } from 'src/app/products/state/product.action';
@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
     deliveryDate: new FormControl('', [this.dateValidator()]),
   });
 
-  constructor(private store: Store<any>, private router: Router) { }
+  constructor(private store: Store<any>, private router: Router, private state: State<any>) { }
 
   myFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
@@ -34,20 +34,14 @@ export class ProductsComponent implements OnInit {
 
   onSubmit(e) {
     e.preventDefault();
-
     if (this.addProductForm.valid) {
-      this.store.pipe(select(selectFeatureCount)).subscribe(res => {
-        this.addProductForm.value.id = res;
+        this.addProductForm.value.id = this.state.getValue().products.idCounter;
         this.addProductForm.value.isRecieved = false;
         this.store.dispatch(addProductToList(this.addProductForm.value));
-        this.addProductForm.reset(this.addProductForm)
+        this.addProductForm.reset(this.addProductForm);
+        this.store.dispatch(setProductCounterId());
         this.router.navigate(['/products']);
-      })
     }
-  }
-
-  setCounterId(){
-    // this.store.dispatch(setProductCounterId());
   }
 
   dateValidator(format = "MM/dd/YYYY"): any {

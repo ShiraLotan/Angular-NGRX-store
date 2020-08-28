@@ -1,0 +1,31 @@
+mat-card {
+  font-family: 'Raleway', sans-serif;
+  width: 230px;
+  height: 240px;
+  margin: 10px;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.store-name {
+  font-size: 24px;
+  margin: 0px 0px 10px;
+}
+
+button {
+  display: block;
+  margin: 20px 0px;
+}
+
+mat-radio-group {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10px;
+}
+
+.date-header {
+  padding: 10px 0px;
+}

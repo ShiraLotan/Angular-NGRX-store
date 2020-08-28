@@ -1,4 +1,5 @@
 import { createSelector } from '@ngrx/store';
+import { state } from '@angular/animations';
 
 
 export const selectFeature = (state: any) => state;
