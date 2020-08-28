@@ -13,6 +13,11 @@ export const selectProductList = createSelector(
     (state: any) => sortProducts(state.products.productList)
 )
 
+export const selectProductCurrency = createSelector(
+  selectFeature,
+  (state: any) => state.products.currency
+)
+
 const sortProducts = (state) => {
   if (state.length > 1) {
     const sortedProduct = state.slice().sort(function (a, b) {

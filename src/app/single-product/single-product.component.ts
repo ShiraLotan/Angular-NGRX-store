@@ -12,6 +12,8 @@ export class SingleProductComponent implements OnInit {
   @Input() product: Product;
   @Output() receive = new EventEmitter();
 
+  priceChoosen: boolean = true;
+
   constructor() { }
 
   ngOnInit(): void {

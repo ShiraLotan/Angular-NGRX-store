@@ -4,7 +4,7 @@ import { Store, select } from '@ngrx/store';
 import { selectProductList } from '../products/state/product.selector';
 import { ProductService } from '../products/product.service';
 import { switchMap } from 'rxjs/operators';
-import { updateReceivedProduct } from '../products/state/product.action';
+import { updateReceivedProduct, updateCurrency } from '../products/state/product.action';
 
 @Component({
   selector: 'app-product-list',
@@ -28,6 +28,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
       switchMap(() => this.productService.getCurrency())
     ).subscribe(res =>{
       this.currencyCurrent$ = res.rates.ILS
+      this.store.dispatch(updateCurrency({currency: res.rates.ILS}))
     } );
   }
 

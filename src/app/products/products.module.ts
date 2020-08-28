@@ -20,6 +20,7 @@ import { SingleProductComponent } from '../single-product/single-product.compone
 import { ProductListComponent } from '../product-list/product-list.component';
 import { RecievedListComponent } from '../recieved-list/recieved-list.component';
 import { CurrencyPipe } from '../products/pipe/currency.pipe';
+import { StoresListComponent } from '../stores-list/stores-list.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { CurrencyPipe } from '../products/pipe/currency.pipe';
     SingleProductComponent,
     ProductListComponent,
     RecievedListComponent,
+    StoresListComponent,
     CurrencyPipe
   ],
   imports: [

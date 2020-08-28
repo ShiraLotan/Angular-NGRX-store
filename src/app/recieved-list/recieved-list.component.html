@@ -1,1 +1,20 @@
-<p>recieved-list works!</p>
+<div class="product-list-wrapper">
+    <mat-tab-group>
+      <mat-tab label="Recieved Products">
+        <h1>Recieved List:</h1>
+        <div class="products-container">
+          <mat-grid-list cols="4" >
+            <div *ngFor="let product of (recievedList$ | async)">
+              <mat-grid-tile>
+                  <app-single-product *ngIf="product && product.isRecieved" [product]="product" [currencyCurrent$]="currenctCurrency$"></app-single-product>
+              </mat-grid-tile>  
+            </div>
+        </mat-grid-list>
+        </div> 
+      </mat-tab>
+      <mat-tab label="Stores">
+          <app-stores-list [productsList$]="(recievedList$ | async)" [isRecived]="true"></app-stores-list>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  

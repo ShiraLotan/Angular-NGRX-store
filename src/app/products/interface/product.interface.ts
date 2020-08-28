@@ -16,3 +16,8 @@ export interface Product {
     isRecieved: boolean,
     deliveryDate: Date | number
 }
+
+export interface ProductStore {
+    name: string,
+    sum: number 
+}

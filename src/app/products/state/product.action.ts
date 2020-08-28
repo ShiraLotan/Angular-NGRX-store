@@ -14,3 +14,8 @@ export const updateReceivedProduct = createAction(
     "[Product] Update Product Received",
     props<{ id: any }>()
 );
+
+export const updateCurrency = createAction(
+    "[Product] Update Currency Rate",
+    props<{ currency: any }>()
+);
