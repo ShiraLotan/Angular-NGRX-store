@@ -11,7 +11,6 @@ const initialSate: ProductState = {
 export const productReducer = createReducer(
     initialSate,
     on(addProductToList, (state, action) => {
-        console.log(state)
         return {
             ...state,
             productList: [...state.productList, action]
