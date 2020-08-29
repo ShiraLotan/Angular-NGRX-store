@@ -5,6 +5,7 @@ import { selectProductList } from '../products/state/product.selector';
 import { ProductService } from '../products/product.service';
 import { switchMap } from 'rxjs/operators';
 import { updateReceivedProduct, updateCurrency } from '../products/state/product.action';
+import { ProductState, Product } from '../products/interface/product.interface';
 
 @Component({
   selector: 'app-product-list',
@@ -12,11 +13,11 @@ import { updateReceivedProduct, updateCurrency } from '../products/state/product
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit, OnDestroy {
-  productList$: Observable<any>;
+  productList$: Observable<Product[]>;
   currencyCurrent$: Observable<number>;
   subscription: Subscription;
 
-  constructor(private store :Store<any>, private productService : ProductService) { }
+  constructor(private store :Store<ProductState>, private productService : ProductService) { }
 
   ngOnInit(): void {
     this.productList$ =  this.store.pipe(select(selectProductList));

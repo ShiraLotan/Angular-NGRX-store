@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Store, select, State } from '@ngrx/store';
+import { Store, State } from '@ngrx/store';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import * as moment from "moment";
 import { addProductToList, setProductCounterId } from 'src/app/products/state/product.action';
-import { selectFeatureCount } from 'src/app/products/state/product.selector';
 import { Router } from '@angular/router';
+import { ProductState } from 'src/app/products/interface/product.interface';
 
 @Component({
   selector: 'app-products',
@@ -15,13 +15,13 @@ export class ProductsComponent implements OnInit {
 
   addProductForm = new FormGroup({
     id: new FormControl(''),
-    name: new FormControl('Headphones', [Validators.required]),
-    storeName: new FormControl('Amazon', [Validators.required]),
-    price: new FormControl('120', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
+    name: new FormControl('', [Validators.required]),
+    storeName: new FormControl('', [Validators.required]),
+    price: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
     deliveryDate: new FormControl('', [this.dateValidator()]),
   });
 
-  constructor(private store: Store<any>, private router: Router, private state: State<any>) { }
+  constructor(private store: Store<ProductState>, private router: Router, private state: State<ProductState>) { }
 
   myFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
@@ -29,10 +29,9 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
   }
 
-  onSubmit(e) {
+  onSubmit(e): void {
     e.preventDefault();
     if (this.addProductForm.valid) {
         this.addProductForm.value.id = this.state.getValue().products.idCounter;

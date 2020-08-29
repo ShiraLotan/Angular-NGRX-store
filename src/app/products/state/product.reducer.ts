@@ -1,8 +1,8 @@
-import { createReducer, on} from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import { addProductToList, setProductCounterId, updateReceivedProduct, updateCurrency } from './product.action';
-import { AppState } from '../interface/product.interface';
+import { ProductState, Product } from '../interface/product.interface';
 
-const initialSate = {
+const initialSate: ProductState = {
     productList: [],
     idCounter: 1,
     currency: 3.4
@@ -24,7 +24,7 @@ export const productReducer = createReducer(
         }
     }),
     on(updateReceivedProduct, (state, action) => {
-        const newList = filterReceivedProduct(state, action.id);
+        const newList = filterReceivedProduct(state.productList, action.id);
         return {
             ...state,
             productList: newList
@@ -38,8 +38,8 @@ export const productReducer = createReducer(
     })
 );
 
-const filterReceivedProduct = (list, id) => {
-    const filtered = list.productList.map(item => {
+const filterReceivedProduct = (list, id)  => {
+    const filtered = list.map(item => {
         if (item.id === id) return { ...item, isRecieved: item.id === id };
         return item;
     });

@@ -21,6 +21,7 @@ import { ProductListComponent } from '../product-list/product-list.component';
 import { RecievedListComponent } from '../recieved-list/recieved-list.component';
 import { CurrencyPipe } from '../products/pipe/currency.pipe';
 import { StoresListComponent } from '../stores-list/stores-list.component';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { StoresListComponent } from '../stores-list/stores-list.component';
     MatToolbarModule,
     MatIconModule,
     MatNativeDateModule,
+    FlexLayoutModule,
     StoreModule.forFeature('products', productReducer)
   ],
   exports: [ProductsComponent, MatTabsModule, MatButtonModule, MatInputModule, MatMenuModule, MatRadioModule, MatDatepickerModule]

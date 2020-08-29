@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AppState } from '../products/interface/product.interface';
+import { ProductState } from '../products/interface/product.interface';
 import { Store, select } from '@ngrx/store';
 import { selectProductList, selectProductCurrency } from '../products/state/product.selector';
 
@@ -10,10 +10,10 @@ import { selectProductList, selectProductCurrency } from '../products/state/prod
   styleUrls: ['./recieved-list.component.css']
 })
 export class RecievedListComponent implements OnInit {
-  recievedList$: Observable<AppState>;
+  recievedList$: Observable<ProductState>;
   currenctCurrency$: Observable<any>;
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<ProductState>) { }
 
   ngOnInit(): void {
     this.recievedList$ = this.store.pipe(select(selectProductList));

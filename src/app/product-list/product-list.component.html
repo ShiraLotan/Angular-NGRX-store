@@ -1,17 +1,20 @@
 <div class="product-list-wrapper">
-    <h4>Total products: {{(productList$ | async)?.length }}</h4>
-    <mat-tab-group>
-      <mat-tab label="Products">
-        <h1>Product List:</h1>
-        <div *ngIf="currencyCurrent$" class="products-container">
-            <div *ngFor="let product of (productList$ | async)">
-                <app-single-product *ngIf="product && !product.isRecieved" (receive)="handleReceived($event)" [product]="product" [currencyCurrent$]="currencyCurrent$"></app-single-product>
-            </div>
-        </div> 
-      </mat-tab>
-      <mat-tab label="Stores">
-        <app-stores-list [productsList$]="(productList$ | async)" [isRecived]="false"></app-stores-list>
-      </mat-tab>
-    </mat-tab-group>
-    <div *ngIf="!(productList$ | async)?.length">No products</div>
-  </div>
+  <h4>Total products: {{(productList$ | async)?.length }}</h4>
+  <mat-tab-group>
+    <mat-tab fxLayout="row wrap" label="Products">
+      <h1>Product List:</h1>
+      <div *ngIf="currencyCurrent$" class="products-container">
+        <div *ngFor="let product of (productList$ | async)">
+          <div fxFlex="25%" >
+            <app-single-product *ngIf="product && !product.isRecieved" (receive)="handleReceived($event)"
+              [product]="product" [currencyCurrent$]="currencyCurrent$"></app-single-product>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Stores">
+      <app-stores-list [productsList$]="(productList$ | async)" [isRecived]="false"></app-stores-list>
+    </mat-tab>
+  </mat-tab-group>
+  <div *ngIf="!(productList$ | async)?.length">No products</div>
+</div>

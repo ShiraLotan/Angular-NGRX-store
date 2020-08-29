@@ -2,10 +2,10 @@ export interface Action {
     type: string;
 }
 
-export interface AppState {
-    products:{
-        productList: []
-    }
+export interface ProductState {
+    productList: [],
+    idCounter: number,
+    currency: number
 }
 
 export interface Product {
@@ -19,5 +19,9 @@ export interface Product {
 
 export interface ProductStore {
     name: string,
-    sum: number 
+    sum: number
+}
+
+export interface Currency {
+    currency: number
 }
