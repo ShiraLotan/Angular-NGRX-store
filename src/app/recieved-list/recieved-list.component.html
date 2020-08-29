@@ -1,7 +1,9 @@
-<div class="product-list-wrapper">
+<div class="  ">
     <mat-tab-group>
       <mat-tab label="Recieved Products">
         <h1>Recieved List:</h1>
+        <div class="no-recieved" *ngIf="!(recievedList$ | async).length">No products recieved yet</div>
+
         <div class="products-container">
             <div *ngFor="let product of (recievedList$ | async)">
                   <app-single-product *ngIf="product && product.isRecieved" [product]="product" [currencyCurrent$]="(currenctCurrency$ | async)"></app-single-product>

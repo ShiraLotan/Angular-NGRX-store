@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { addProductToList, setProductCounterId, updateReceivedProduct, updateCurrency } from './product.action';
-import { ProductState, Product } from '../interface/product.interface';
+import { ProductState} from '../interface/product.interface';
 
 const initialSate: ProductState = {
     productList: [],

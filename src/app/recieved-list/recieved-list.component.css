@@ -1,0 +1,9 @@
+.products-container{
+    display: flex;
+}
+.product-list-wrapper{
+    margin: 10px;
+}
+h1, .no-recieved{
+    margin-left: 10px;
+}

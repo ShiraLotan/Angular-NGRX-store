@@ -12,7 +12,7 @@ export class StoresListComponent implements OnInit {
   private _productList = new BehaviorSubject<Product[]>([]);
 
   @Input()
-  set productsList$(value) {
+  set productsList$(value: Product[]) {
     this._productList.next(value);
   };
 
@@ -36,7 +36,7 @@ export class StoresListComponent implements OnInit {
     })
   }
 
-  handleAggrigation(filterProductList) {
+  handleAggrigation(filterProductList: Product[]): void {
     const storesArr = [];
 
     let group = filterProductList.reduce((r, a) => {
